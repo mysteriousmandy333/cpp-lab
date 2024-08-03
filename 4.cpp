@@ -1,5 +1,5 @@
 #include <iostream>
-#include <iomanip> // For std::setw and std::setfill
+#include <iomanip> 
 using namespace std;
 
 class TIME {
@@ -8,7 +8,6 @@ private:
     int minutes;
     int seconds;
 
-    // Helper function to normalize time (ensure proper range of hours, minutes, seconds)
     void normalize() {
         if (seconds >= 60) {
             minutes += seconds / 60;
@@ -34,25 +33,20 @@ private:
     }
 
 public:
-    // Constructor to initialize the object to zero
     TIME() : hours(0), minutes(0), seconds(0) {}
 
-    // Constructor to initialize the object to some constant value
     TIME(int h, int m, int s) : hours(h), minutes(m), seconds(s) {
         normalize();
     }
 
-    // Overload + operator to add two TIME objects
     TIME operator+(const TIME& other) const {
         return TIME(hours + other.hours, minutes + other.minutes, seconds + other.seconds);
     }
 
-    // Overload - operator to subtract two TIME objects
     TIME operator-(const TIME& other) const {
         return TIME(hours - other.hours, minutes - other.minutes, seconds - other.seconds);
     }
 
-    // Overload > operator to compare two TIME objects
     bool operator>(const TIME& other) const {
         if (hours > other.hours) return true;
         if (hours < other.hours) return false;
@@ -61,7 +55,6 @@ public:
         return seconds > other.seconds;
     }
 
-    // Member function to display time in HH:MM:SS format
     void display() const {
         cout << setw(2) << setfill('0') << hours << ":"
              << setw(2) << setfill('0') << minutes << ":"
